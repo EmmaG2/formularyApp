@@ -1,0 +1,7 @@
+.flex-container {
+  background: #222;
+  min-width: 310px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
