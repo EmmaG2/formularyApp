@@ -12,4 +12,9 @@ export class BasicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar() {
+    console.log('hola mundo');
+
+  }
+
 }
