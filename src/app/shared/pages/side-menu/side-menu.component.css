@@ -1,0 +1,14 @@
+@media (hover: hover) {
+
+  .list-group-item:hover {
+    background: var(--bs-gray-200);
+    border: var(--bs-gray-200);
+    cursor: pointer;
+  }
+
+  .active:hover {
+    background: var(--bs-blue);
+    border: var(--bs-blue);
+  }
+
+}
