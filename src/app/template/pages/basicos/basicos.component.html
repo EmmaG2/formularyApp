@@ -5,22 +5,22 @@
   <article class="col">
 
     <!-- producto -->
-    <form (submit)="guardar( miFormulario )"
+    <form (submit)="guardar()"
           #miFormulario="ngForm"
           autocomplete="off">
       <section class="mb-3 row">
         <label class="col-sm-3 col-form-label">Producto</label>
-        <article class="col-sm-9">
+        <article>
           <input type="text"
                  class="form-control"
                  placeholder="Nombre del producto"
-                 ngModel
+                 [ngModel]="initForm.producto"
                  name="producto"
                  required
-                 minlength="3">
+                 minlength="4">
           <span class="form-text text-danger"
-                *ngIf="miFormulario.controls">
-            Debe tener mínimo 3 letras
+                *ngIf="nombreVaido()">
+            Debe tener mínimo 4 dígitos
           </span>
         </article>
       </section>
@@ -28,25 +28,32 @@
       <!-- precio -->
       <section class="mb-3 row">
         <label class="col-sm-3 col-form-label">Precio</label>
-        <article class="col-sm-9">
+        <article>
           <input type="number"
                  class="form-control"
                  placeholder="Precio del producto"
-                 ngModel
+                 [ngModel]="initForm.precio"
                  name="precio"
                  required>
+          <span class="form-text text-danger"
+          *ngIf="precioValido()">
+            El precio es mínimo es de $100 MXN
+          </span>
         </article>
       </section>
 
       <!-- existencias -->
       <section class="mb-3 row">
         <label class="col-sm-3 col-form-label">Existencias</label>
-        <article class="col-sm-9">
+        <article>
           <input type="number"
                  class="form-control"
                  placeholder="Existencias del producto"
-                 ngModel
-                 name="existencias">
+                 [ngModel]="initForm.existencias"
+                 name="existencias"
+                 customMin
+                 [minimo]="1"
+                 required>
         </article>
       </section>
 
@@ -54,6 +61,7 @@
       <section class="row">
         <article class="col">
           <button type="submit"
+            	    [disabled]="miFormulario.invalid"
                   class="btn btn-primary float-end">
             Guardar
           </button>
